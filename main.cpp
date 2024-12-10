@@ -1,28 +1,30 @@
 #include <iostream>
-#include <unordered_map>
+#include <vector>
 #include <chrono>
 
 using namespace std;
 
-unordered_map<long long, int> memo;
+const long long MAX = 1000000;
+vector<long long> memo(MAX, 0);
 
-int collatz(long long n) {
+long long collatz(long long n) {
     if (n == 1) // Como n = 1, logo a sequencia termina
         return 1;
 
-    // Para poupar processamento, verificar na 
-    // memoria de n já foi calculado
-    if (memo.count(n))
+    if (n < MAX && memo[n] != 0)  // Corrigido para garantir que n não ultrapasse MAX
         return memo[n];
 
-    int steps = 1; // Passo começa em 1 para considerar o passo atual
-    if (n % 2){
+    long long steps = 1; // Passo começa em 1 para considerar o passo atual
+    if (n % 2 == 0){
         steps += collatz(n / 2);
     } else {
-        steps += collatz(3 * n + 1);
+        steps += collatz((3 * n) + 1);
+    }
+    
+    if (n < MAX) {
+        memo[n] = steps;  // Armazene o resultado apenas se n estiver dentro do limite
     }
 
-    memo[n] = steps; // Salva o passo N na memoria para memoização
     return steps;
 }
 
@@ -30,7 +32,7 @@ int main() {
      // Inicia o cronômetro antes da execução
     auto start = chrono::high_resolution_clock::now();
 
-    memo[1] = 1; // Inicializa a tabela com o valor conhecido
+    memo[0] = 1; // Inicializa a tabela com o valor conhecido
 
     int maxSteps = 0;
     long long maxNum = 0;

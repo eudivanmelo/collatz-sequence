@@ -40,9 +40,9 @@ O programa encontra o número abaixo de 1 milhão que gera a sequência de Colla
 ```
 O número que gera a sequência mais longa é: 837799
 Comprimento da sequência: 525
-Tempo de execução: 1.6 segundos
+Tempo de execução: 0.0227779 segundos
 ```
 
 ## Desempenho
 
-O programa calcula eficientemente a sequência de Collatz mais longa para números até 1 milhão em **aproximadamente 1.6 segundos** utilizando memoização. O uso de um `unordered_map` garante que resultados previamente calculados sejam reutilizados, reduzindo significativamente cálculos redundantes e melhorando o desempenho.
+O programa calcula eficientemente a sequência de Collatz mais longa para números até 1 milhão em **aproximadamente 0.02 segundos** utilizando memoização. O uso de um `unordered_map` garante que resultados previamente calculados sejam reutilizados, reduzindo significativamente cálculos redundantes e melhorando o desempenho.
