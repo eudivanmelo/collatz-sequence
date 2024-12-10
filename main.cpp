@@ -7,11 +7,22 @@ using namespace std;
 unordered_map<long long, int> memo;
 
 int collatz(long long n) {
-    if (n == 1) return 1;
-    if (memo.count(n)) return memo[n];
+    if (n == 1) // Como n = 1, logo a sequencia termina
+        return 1;
 
-    int steps = 1 + collatz(n % 2 == 0 ? n / 2 : 3 * n + 1);
-    memo[n] = steps;
+    // Para poupar processamento, verificar na 
+    // memoria de n já foi calculado
+    if (memo.count(n))
+        return memo[n];
+
+    int steps = 1; // Passo começa em 1 para considerar o passo atual
+    if (n % 2){
+        steps += collatz(n / 2);
+    } else {
+        steps += collatz(3 * n + 1);
+    }
+
+    memo[n] = steps; // Salva o passo N na memoria para memoização
     return steps;
 }
 
