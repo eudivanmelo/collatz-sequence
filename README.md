@@ -33,7 +33,7 @@ O programa encontra o número abaixo de 1 milhão que gera a sequência de Colla
 
 - **Número que gera a sequência mais longa**: `837799`
 - **Comprimento da sequência**: `525`
-- **Tempo de execução**: `1.6 segundos`
+- **Tempo de execução**: `0.228 segundos`
 
 ## Saída Esperada
 
